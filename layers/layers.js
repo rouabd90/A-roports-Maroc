@@ -1,10 +1,8 @@
-ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:4326").setExtent([-19.016076, 20.698052, 1.176274, 36.607176]);
 var wms_layers = [];
 
 var format_Limites_MAR_0 = new ol.format.GeoJSON();
 var features_Limites_MAR_0 = format_Limites_MAR_0.readFeatures(json_Limites_MAR_0, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
 var jsonSource_Limites_MAR_0 = new ol.source.Vector({
     attributions: ' ',
 });
@@ -19,7 +17,7 @@ var lyr_Limites_MAR_0 = new ol.layer.Vector({
             });
 var format_Regions_MAR_1 = new ol.format.GeoJSON();
 var features_Regions_MAR_1 = format_Regions_MAR_1.readFeatures(json_Regions_MAR_1, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
 var jsonSource_Regions_MAR_1 = new ol.source.Vector({
     attributions: ' ',
 });
@@ -34,18 +32,14 @@ var lyr_Regions_MAR_1 = new ol.layer.Vector({
             });
 var format_Aearoports_MAR_2 = new ol.format.GeoJSON();
 var features_Aearoports_MAR_2 = format_Aearoports_MAR_2.readFeatures(json_Aearoports_MAR_2, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:4326'});
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
 var jsonSource_Aearoports_MAR_2 = new ol.source.Vector({
     attributions: ' ',
 });
 jsonSource_Aearoports_MAR_2.addFeatures(features_Aearoports_MAR_2);
-cluster_Aearoports_MAR_2 = new ol.source.Cluster({
-  distance: 30,
-  source: jsonSource_Aearoports_MAR_2
-});
 var lyr_Aearoports_MAR_2 = new ol.layer.Vector({
                 declutter: false,
-                source:cluster_Aearoports_MAR_2, 
+                source:jsonSource_Aearoports_MAR_2, 
                 style: style_Aearoports_MAR_2,
                 popuplayertitle: 'Aearoports_MAR',
                 interactive: true,
